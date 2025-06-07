@@ -1,60 +1,67 @@
-# AngularMovieApp
+# 🎓 **Exercice Angular 20 – Recherche de Films avec TMDB**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+### 🎯 Objectif pédagogique
 
-## Development server
+Vous allez créer un petit moteur de recherche de films utilisant l’API publique de [TheMovieDB](https://developer.themoviedb.org/reference/intro/getting-started).
+<br>Cet exercice vous permettra de :
 
-To start a local development server, run:
+* manipuler `HttpClient` et les `Observable`
+* utiliser le `pipe async` dans les templates
+* mettre en place une **barre de recherche** avec `debounce`
+* séparer correctement les responsabilités avec un service dédié
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 📋 Consignes
 
-## Code scaffolding
+#### 🔧 1. Récupération des films populaires
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* Créez un composant nommé `MovieSearch`.
+* À l’ouverture du composant, affichez la liste des **films populaires** (`/movie/popular`).
 
-```bash
-ng generate component component-name
-```
+#### 🔍 2. Barre de recherche avec debounce
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* Ajoutez un champ de saisie pour rechercher un film par son titre (`/search/movie`).
+* Lorsque l’utilisateur tape dans la barre de recherche :
 
-```bash
-ng generate --help
-```
+  * Lancer la recherche après un **délai de 500ms** sans saisie (débounce).
+  * Ne relancer une requête que si le terme a changé (`distinctUntilChanged`).
+  * Si le champ est vide, réafficher les films populaires.
 
-## Building
+#### ⚙️ 3. Utilisation d’observables et du pipe `async`
 
-To build the project run:
+* Toutes les données du template doivent provenir d’un `Observable`.
+* Utilisez **le `pipe async`** dans le HTML pour la consommation des données.
 
-```bash
-ng build
-```
+#### 🧩 4. Architecture propre (Clean Code)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* Créez un **service `MovieService`** qui encapsule les appels à l’API.
+* Ce service doit exposer 2 méthodes :
 
-## Running unit tests
+  * `getPopularMovies()`
+  * `searchMovies(query: string)`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+### 🧠 Bonus (optionnel mais recommandé)
 
-## Running end-to-end tests
+* Affichez un message `"Aucun film trouvé"` si la recherche ne retourne rien.
+* Stylisez les résultats avec un minimum de CSS (ou Tailwind si vous êtes à l’aise).
+* Affichez la **note moyenne (`vote_average`)** et une **image d’affiche** (`poster_path`).
+* Faire le fetch des datas avec `httpRessource`
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+### 🔑 Clé API
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> Créez un compte gratuit sur [https://www.themoviedb.org](https://www.themoviedb.org) puis récupérez votre clé API depuis votre tableau de bord développeur.
+> Vous en aurez besoin pour chaque requête (`api_key` dans les paramètres).
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# Angular-Movie-App
+### 📘 Documentation utile
+
+* API TMDB : [https://developer.themoviedb.org/reference/intro/getting-started](https://developer.themoviedb.org/reference/intro/getting-started)
+* `HttpClient` : [[https://angular.io/guide/http](https://angular.io/guide/http](https://angular.dev/guide/http)
+* `async` pipe : [[https://angular.io/api/common/AsyncPipe](https://angular.io/api/common/AsyncPipe](https://angular.dev/api/common/AsyncPipe)
+* `debounceTime`, `switchMap` (RxJS) : [https://rxjs.dev](https://rxjs.dev)
