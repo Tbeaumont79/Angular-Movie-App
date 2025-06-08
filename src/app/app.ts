@@ -5,6 +5,5 @@ import { Navbar } from './features/navbar/navbar';
   selector: 'app-root',
   imports: [RouterOutlet, Navbar],
   templateUrl: './app.html',
-  styleUrl: './app.css',
 })
 export class App {}

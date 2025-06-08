@@ -1,0 +1,11 @@
+@if(movies$.isLoading()) {
+  <p>Loading...</p>
+} @if(movies$.hasValue()) {
+  <ul>
+    @for(movie of movies$.value().results; track movie.id) {
+      <li>
+        <h2>{{movie.title}}</h2>
+      </li>
+    }
+  </ul>
+}
