@@ -1,11 +1,30 @@
-@if(movies$.isLoading()) {
-  <p>Loading...</p>
-} @if(movies$.hasValue()) {
-  <ul>
+<div class="w-full flex justify-center items-center pt-10">
+  @if(movies$.isLoading()) {
+    <p>Loading...</p>
+  } @if(movies$.hasValue()) {
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
+    >
     @for(movie of movies$.value().results; track movie.id) {
       <li>
-        <h2>{{movie.title}}</h2>
+        <div class="card bg-base-100 w-96 shadow-sm">
+          <figure>
+            <img
+              src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"
+              alt="{{movie.title}}"
+              loading="lazy"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">{{movie.title}}</h2>
+            <p class="truncate">{{movie.overview}}</p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-primary">Buy Now</button>
+            </div>
+          </div>
+        </div>
       </li>
     }
   </ul>
-}
+  }
+</div>
