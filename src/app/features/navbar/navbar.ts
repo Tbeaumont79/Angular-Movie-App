@@ -19,4 +19,6 @@ export class Navbar {
       this.searchInput.nativeElement.focus();
     }
   }
+
+  
 }
