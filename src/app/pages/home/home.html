@@ -1,6 +1,17 @@
 <div class="w-full flex justify-center items-center pt-10">
   @if(movies$.isLoading()) {
-    <p>Loading...</p>
+    <div class="flex flex-col items-center">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
+
+      @for(i of [1, 2, 3, 4, 5]; track i) {
+          <div class="skeleton h-32 w-full"></div>
+          <div class="skeleton h-4 w-28"></div>
+          <div class="skeleton h-4 w-full"></div>
+          <div class="skeleton h-4 w-full"></div>
+      }
+        </ul>
+
+    </div>
   } @if(movies$.hasValue()) {
     <ul
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
