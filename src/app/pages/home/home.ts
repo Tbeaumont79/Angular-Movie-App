@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpHeaders, httpResource } from '@angular/common/http';
-import { Movie, MovieResponse } from '../../core/interfaces/movie';
+import { MovieResponse } from '../../core/interfaces/movie';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.html',
 })
 export class Home {

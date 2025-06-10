@@ -30,7 +30,7 @@
             <h2 class="card-title">{{movie.title}}</h2>
             <p class="truncate">{{movie.overview}}</p>
             <div class="card-actions justify-end">
-              <button class="btn btn-primary">Voir plus →</button>
+              <a routerLink="/movie-details/{{movie.id}}" class="btn btn-primary">Voir plus →</a>
             </div>
           </div>
         </div>
