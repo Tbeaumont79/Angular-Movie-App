@@ -3,9 +3,10 @@ import { environment } from '../../../environments/environment.development';
 import { HttpHeaders, httpResource } from '@angular/common/http';
 import { MovieResponse } from '../../core/interfaces/movie';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: './home.html',
 })
 export class Home {

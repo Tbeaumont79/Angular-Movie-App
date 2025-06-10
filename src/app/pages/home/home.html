@@ -1,40 +1,44 @@
 <div class="w-full flex justify-center items-center pt-10">
   @if(movies$.isLoading()) {
-    <div class="flex flex-col items-center">
-      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10">
-
-      @for(i of [1, 2, 3, 4, 5]; track i) {
-          <div class="skeleton h-32 w-full"></div>
-          <div class="skeleton h-4 w-28"></div>
-          <div class="skeleton h-4 w-full"></div>
-          <div class="skeleton h-4 w-full"></div>
-      }
-        </ul>
-
-    </div>
-  } @if(movies$.hasValue()) {
+  <div class="flex flex-col items-center">
     <ul
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
     >
+      @for(i of [1, 2, 3, 4, 5]; track i) {
+      <div class="skeleton h-32 w-full"></div>
+      <div class="skeleton h-4 w-28"></div>
+      <div class="skeleton h-4 w-full"></div>
+      <div class="skeleton h-4 w-full"></div>
+      }
+    </ul>
+  </div>
+  } @if(movies$.hasValue()) {
+  <ul
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
+  >
     @for(movie of movies$.value().results; track movie.id) {
-      <li>
-        <div class="card bg-base-100 w-96 shadow-sm">
-          <figure>
-            <img
-              src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"
-              alt="{{movie.title}}"
-              loading="lazy"
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">{{movie.title}}</h2>
-            <p class="truncate">{{movie.overview}}</p>
-            <div class="card-actions justify-end">
-              <a routerLink="/movie-details/{{movie.id}}" class="btn btn-primary">Voir plus →</a>
-            </div>
+    <li>
+      <div class="card bg-base-100 w-96 shadow-sm">
+        <figure>
+          <img
+            [ngSrc]="'/t/p/w500' + movie.poster_path"
+            alt="{{movie.title}}"
+            width="500"
+            height="750"
+            [priority]="$first"
+          />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">{{movie.title}}</h2>
+          <p class="truncate">{{movie.overview}}</p>
+          <div class="card-actions justify-end">
+            <a routerLink="/movie-details/{{movie.id}}" class="btn btn-primary"
+              >Voir plus →</a
+            >
           </div>
         </div>
-      </li>
+      </div>
+    </li>
     }
   </ul>
   }
