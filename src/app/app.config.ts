@@ -8,7 +8,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideImageKitLoader } from '@angular/common';
-import { environment } from '../environments/environment';
+import { environment } from '@env/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [

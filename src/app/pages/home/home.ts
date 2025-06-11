@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { HttpHeaders, httpResource } from '@angular/common/http';
 import { MovieResponse } from '../../core/interfaces/movie';
 import { RouterLink } from '@angular/router';
