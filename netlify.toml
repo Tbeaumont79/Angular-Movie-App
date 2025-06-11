@@ -1,11 +1,4 @@
-# Fichier : netlify.toml
-
 [build]
 command = "nx build Angular-Movie-App --no-cloud"
 
-publish = "dist/apps/Angular-Movie-App/browser"
-
-[[plugins]]
-package = "@netlify/angular-runtime"
-  [plugins.inputs]
-  packagePath = "."
+publish = "dist/Angular-Movie-App/browser"
