@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nx serve",
+    "prebuild": "node generate-env.js",
     "build": "nx build Angular-Movie-App --no-cloud",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
