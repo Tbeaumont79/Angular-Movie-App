@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nx serve",
-    "build": "nx build",
+    "build": "nx build Angular-Movie-App --no-cloud",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"
   },
