@@ -4,11 +4,10 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { environment } from '@env/environment';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideImageKitLoader } from '@angular/common';
-import { environment } from 'src/environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [

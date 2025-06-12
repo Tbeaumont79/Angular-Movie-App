@@ -3,7 +3,8 @@ import { HttpHeaders, httpResource } from '@angular/common/http';
 import { MovieResponse } from '../../core/interfaces/movie';
 import { RouterLink } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
+
 @Component({
   selector: 'app-home',
   imports: [RouterLink, NgOptimizedImage],
