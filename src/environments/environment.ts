@@ -1,5 +1,6 @@
+
 export const environment = {
   production: true,
-  apiKey: '',
-  imageKitId: '',
+  apiKey: process.env['apiKey'],
+  imageKitId: process.env['imageKitId'],
 };
