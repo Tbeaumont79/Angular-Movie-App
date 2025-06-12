@@ -1,5 +1,3 @@
 [build]
-framework = "#static"
-command = "npm run build"
-
+command = "npx nx build Angular-Movie-App --configuration=production --no-cloud"
 publish = "dist/Angular-Movie-App/browser"
