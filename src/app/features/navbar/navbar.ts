@@ -1,5 +1,11 @@
-import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
-
+import {
+  Component,
+  HostListener,
+  ViewChild,
+  ElementRef,
+  inject,
+} from '@angular/core';
+import { MovieSearchService } from '../../core/services/movie-search-service';
 @Component({
   selector: 'app-navbar',
   imports: [],
@@ -7,6 +13,8 @@ import { Component, HostListener, ViewChild, ElementRef } from '@angular/core';
 })
 export class Navbar {
   @ViewChild('SearchInput') searchInput!: ElementRef<HTMLInputElement>;
+  private movieSearch = inject(MovieSearchService);
+
   @HostListener('document:keydown', ['$event'])
   handleKeyBoardEvent(event: KeyboardEvent): void {
     const isMac = navigator.userAgent.toLowerCase().includes('mac');
@@ -20,5 +28,8 @@ export class Navbar {
     }
   }
 
-  
+  onSearchInput(value: string): void {
+    this.movieSearch.updateTerm(value);
+    console.log('Search input updated:', value);
+  }
 }
