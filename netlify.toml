@@ -3,4 +3,4 @@ command = "npm run prebuild && npx nx build Angular-Movie-App --configuration=pr
 environment = { NODE_VERSION = "18" }
 publish = "dist/Angular-Movie-App/browser"
 [build.environment]
-  SECRETS_SCAN_OMIT_KEYS = "apiKey,imageKitId"
+SECRETS_SCAN_OMIT_KEYS = "apiKey,imageKitId"

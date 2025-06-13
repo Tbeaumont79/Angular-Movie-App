@@ -1,6 +1,6 @@
 
 export const environment = {
   production: true,
-  apiKey: 'undefined',
-  imageKitId: 'undefined'
+  apiKey: '',
+  imageKitId: ''
 };

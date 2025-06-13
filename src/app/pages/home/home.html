@@ -1,4 +1,4 @@
-<div class="w-full flex justify-center items-center pt-10">
+<div class="flex justify-center items-center">
   @if(movies$.isLoading()) {
   <div class="flex flex-col items-center">
     <ul
@@ -14,18 +14,28 @@
   </div>
   } @if(movies$.hasValue()) {
   <ul
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
+    class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 overflow-hidden pt-10"
   >
     @for(movie of movies$.value().results; track movie.id) {
     <li>
       <div class="card bg-base-100 w-96 shadow-sm">
         <figure>
           <img
+            class="hidden md:block lg:block"
             [ngSrc]="'/t/p/w500' + movie.poster_path"
             alt="{{movie.title}}"
             width="500"
             height="750"
             [priority]="$first"
+          />
+          <img
+            class="md:hidden lg:hidden"
+            [ngSrc]="'/t/p/w500' + movie.poster_path"
+            alt="{{movie.title}}"
+            width="300"
+            height="450"
+            [priority]="$first"
+            priority="true"
           />
         </figure>
         <div class="card-body">
