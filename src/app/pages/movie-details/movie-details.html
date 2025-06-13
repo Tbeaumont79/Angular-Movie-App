@@ -1,1 +1,48 @@
-<p>This is the movie details pages</p>
+<div class="flex flex-col justify-center items-center pt-10">
+  @if (movie$.isLoading()) {
+  <div class="flex flex-col items-center">
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10"
+    >
+      @for (i of [1, 2, 3, 4, 5]; track i) {
+      <div class="skeleton h-32 w-full"></div>
+      <div class="skeleton h-4 w-28"></div>
+      <div class="skeleton h-4 w-full"></div>
+      <div class="skeleton h-4 w-full"></div>
+      }
+    </ul>
+  </div>
+  } @if (movie$.error()) {
+  <p class="text-red-500">
+    An error occurred while fetching the movie details.
+  </p>
+  } @if (movie$.hasValue()) {
+  <div class="card bg-base-100 w-5/6 shadow-sm">
+    <figure>
+      <img
+        class="hidden md:block lg:block"
+        [ngSrc]="'/t/p/w500' + movie$.value().poster_path"
+        alt="{{movie$.value().title}}"
+        width="500"
+        height="750"
+      />
+      <img
+        class="md:hidden lg:hidden"
+        [ngSrc]="'/t/p/w500' + movie$.value().poster_path"
+        alt="{{movie$.value().title}}"
+        width="300"
+        height="450"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{movie$.value().title}}</h2>
+      <p class="">{{movie$.value().overview}}</p>
+      <div class="card-actions justify-end p-10">
+        <a routerLink="/" class="btn btn-primary"
+          >← Retour à la liste des films</a
+        >
+      </div>
+    </div>
+  </div>
+  }
+</div>

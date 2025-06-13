@@ -1,26 +1,25 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../environments/environment.development';
+import { HttpHeaders, httpResource } from '@angular/common/http';
+import { Movie } from '../../core/interfaces/movie';
+import { NgOptimizedImage } from '@angular/common';
+
 @Component({
   selector: 'app-movie-details',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './movie-details.html',
 })
 export class MovieDetails {
-  movieId: number | null = null;
   route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly apiKey: string = environment.apiKey;
+  movieId = parseInt(this.route.snapshot.paramMap.get('movieId') || '', 10);
+  private readonly apiUrl: string = `https://api.themoviedb.org/3/movie/${this.movieId}`;
 
-  ngOnInit() {
-    this.movieId = parseInt(
-      this.route.snapshot.paramMap.get('movieId') || '',
-      10
-    );
-    if (isNaN(this.movieId)) {
-      console.error(
-        'Invalid movieId:',
-        this.route.snapshot.paramMap.get('movieId')
-      );
-      this.movieId = null;
-      throw new Error('Invalid movieId provided in the route movie details');
-    }
-  }
+  movie$ = httpResource<Movie>(() => ({
+    url: this.apiUrl,
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.apiKey}`,
+    }),
+  }));
 }
