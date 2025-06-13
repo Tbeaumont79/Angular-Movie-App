@@ -4,10 +4,10 @@ import { environment } from '../../../environments/environment.development';
 import { HttpHeaders, httpResource } from '@angular/common/http';
 import { Movie } from '../../core/interfaces/movie';
 import { NgOptimizedImage } from '@angular/common';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-movie-details',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './movie-details.html',
 })
 export class MovieDetails {
