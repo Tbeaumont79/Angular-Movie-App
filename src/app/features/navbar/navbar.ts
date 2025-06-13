@@ -30,6 +30,5 @@ export class Navbar {
 
   onSearchInput(value: string): void {
     this.movieSearch.updateTerm(value);
-    console.log('Search input updated:', value);
   }
 }

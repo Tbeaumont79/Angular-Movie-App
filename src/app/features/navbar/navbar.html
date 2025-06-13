@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 shadow-sm w-4/5 mx-auto">
+<div class="fixed z-50 top-0 navbar bg-base-100 shadow-sm w-4/5 mx-auto">
   <div class="flex-1">
     <a class="btn btn-ghost text-xl">Angular Movie App</a>
   </div>
@@ -20,7 +20,13 @@
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input #SearchInput type="search" class="grow" placeholder="Search" (keyup)="onSearchInput(SearchInput.value)"/>
+      <input
+        #SearchInput
+        type="search"
+        class="grow"
+        placeholder="Search"
+        (keyup)="onSearchInput(SearchInput.value)"
+      />
       <kbd class="kbd kbd-sm">⌘</kbd>
       <kbd class="kbd kbd-sm">K</kbd>
     </label>
